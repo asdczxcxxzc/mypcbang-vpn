@@ -38,21 +38,13 @@ export class LifecycleService implements OnModuleInit {
 
   // ---------- 공유기 헬스체크 ----------
   private async healthCheck() {
+    // 클라이언트 하트비트 기반 관리 — TCP 프로브로 오프라인 자동 전환 비활성화.
+    // 공유기 상태는 등록 시 online:true 기본값 유지, 관리자가 수동 관리.
     const routers = await this.prisma.vpnIp.findMany({
-      select: { id: true, host: true, port: true, ipAddress: true, online: true, region: true },
+      select: { id: true },
     });
     for (const r of routers) {
-      const alive = await this.tcpProbe(r.host, r.port);
-      if (alive !== r.online) {
-        await this.prisma.vpnIp.update({ where: { id: r.id }, data: { online: alive, lastCheckedAt: new Date() } });
-        if (!alive) {
-          await this.prisma.alert.create({
-            data: { type: 'router_offline', username: '-', message: `공유기 오프라인 — ${r.ipAddress}${r.region ? ` (${r.region})` : ''}` },
-          });
-        }
-      } else {
-        await this.prisma.vpnIp.update({ where: { id: r.id }, data: { lastCheckedAt: new Date() } });
-      }
+      await this.prisma.vpnIp.update({ where: { id: r.id }, data: { lastCheckedAt: new Date() } });
     }
   }
 
