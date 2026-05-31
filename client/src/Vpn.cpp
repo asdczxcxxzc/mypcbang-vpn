@@ -28,12 +28,17 @@ namespace vpn {
 bool connect(const Creds& c) {
   disconnect();  // 잔여 프로필 정리
 
-  // 1) 임시 L2TP/IPsec 프로필 생성 (PSK). RememberCredential 끔 → 자격증명 저장 안 함.
+  // 호스트에서 포트 제거 (IP:port 형태로 들어올 경우 IP만 추출)
+  std::wstring host = c.host;
+  auto colon = host.find(L':');
+  if (colon != std::wstring::npos) host = host.substr(0, colon);
+
+  // 1) 임시 L2TP/IPsec 프로필 생성 (PSK). RememberCredential → 자격증명 저장.
   std::wstring add =
     L"powershell -NonInteractive -WindowStyle Hidden -Command "
-    L"\"Add-VpnConnection -Name '" + std::wstring(kProfile) + L"' -ServerAddress '" + c.host + L"' "
+    L"\"Add-VpnConnection -Name '" + std::wstring(kProfile) + L"' -ServerAddress '" + host + L"' "
     L"-TunnelType L2tp -L2tpPsk '" + c.psk + L"' -AuthenticationMethod MSChapv2 "
-    L"-EncryptionLevel Optional -Force -RememberCredential:$false -PassThru | Out-Null\"";
+    L"-EncryptionLevel Optional -Force -RememberCredential:$true -PassThru | Out-Null\"";
   if (runHidden(add) != 0) return false;
 
   // 2) rasdial 로 다이얼 (자격증명은 인자 — 사용 직후 프로세스 종료)

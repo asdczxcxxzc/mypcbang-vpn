@@ -157,10 +157,15 @@ export class IpsService {
     return { ok: true };
   }
 
-  /** PSK·관리자 비번 복호화 (수동 설정/확인용, 관리자 전용) */
+  /** PSK·관리자 비번·VPN 계정 복호화 (수동 설정/확인용, 관리자 전용) */
   async revealCredentials(id: number) {
     const r = await this.prisma.vpnIp.findUnique({ where: { id } });
     if (!r) throw new NotFoundException('공유기를 찾을 수 없습니다.');
+    const accounts = await this.prisma.vpnAccount.findMany({
+      where: { vpnIpId: id },
+      select: { id: true, username: true, passwordEnc: true, status: true },
+      orderBy: { id: 'asc' },
+    });
     return {
       id: r.id,
       ipAddress: r.ipAddress,
@@ -171,6 +176,12 @@ export class IpsService {
       adminUrl: r.adminUrl,
       adminUsername: r.adminUsername,
       adminPassword: r.adminPasswordEnc ? decrypt(r.adminPasswordEnc) : null,
+      accounts: accounts.map(a => ({
+        id: a.id,
+        username: a.username,
+        password: decrypt(a.passwordEnc),
+        status: a.status,
+      })),
     };
   }
 }

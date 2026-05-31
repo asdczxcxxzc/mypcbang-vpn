@@ -158,14 +158,39 @@ export default function Routers() {
       </div>
 
       {reveal && (
-        <div onClick={() => setReveal(null)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', display: 'grid', placeItems: 'center', zIndex: 50 }}>
-          <div className="card" onClick={(e) => e.stopPropagation()} style={{ width: 440, margin: 0 }}>
+        <div onClick={() => setReveal(null)} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', display: 'grid', placeItems: 'center', zIndex: 50, overflowY: 'auto' }}>
+          <div className="card" onClick={(e) => e.stopPropagation()} style={{ width: 500, margin: '20px auto' }}>
             <h3>공유기 설정 정보 — {reveal.ipAddress}</h3>
-            <p className="muted" style={{ marginBottom: 14 }}>L2TP 서버 설정 + 공유기 관리자 접속정보</p>
+            <p className="muted" style={{ marginBottom: 14 }}>VPN 서버 설정 + 공유기 관리자 접속정보</p>
             <Cred k="호스트" v={reveal.host} /><Cred k="포트" v={String(reveal.port)} />
-            <Cred k="프로토콜" v={reveal.protocol} /><Cred k="PSK" v={reveal.psk ?? '-'} />
+            <Cred k="프로토콜" v={reveal.protocol} /><Cred k="PSK(비밀키)" v={reveal.psk ?? '-'} />
             <Cred k="관리자 URL" v={reveal.adminUrl ?? '-'} /><Cred k="관리자 ID" v={reveal.adminUsername ?? '-'} />
             <Cred k="관리자 비번" v={reveal.adminPassword ?? '-'} />
+
+            {reveal.accounts?.length > 0 && (
+              <div style={{ marginTop: 16 }}>
+                <p style={{ fontWeight: 600, marginBottom: 8 }}>VPN 접속 계정 ({reveal.accounts.length}개)</p>
+                <p className="muted" style={{ fontSize: 12, marginBottom: 8 }}>공유기 VPN 서버에 아래 계정들을 등록하세요</p>
+                <table style={{ width: '100%', fontSize: 13, borderCollapse: 'collapse' }}>
+                  <thead><tr style={{ borderBottom: '1px solid var(--border)' }}>
+                    <th style={{ textAlign: 'left', padding: '4px 8px' }}>#</th>
+                    <th style={{ textAlign: 'left', padding: '4px 8px' }}>아이디</th>
+                    <th style={{ textAlign: 'left', padding: '4px 8px' }}>비밀번호</th>
+                    <th style={{ textAlign: 'left', padding: '4px 8px' }}>상태</th>
+                  </tr></thead>
+                  <tbody>
+                    {reveal.accounts.map((a: any, i: number) => (
+                      <tr key={a.id} style={{ borderBottom: '1px solid var(--border)' }}>
+                        <td style={{ padding: '4px 8px', color: 'var(--muted)' }}>{i + 1}</td>
+                        <td style={{ padding: '4px 8px', fontFamily: 'monospace', userSelect: 'all' }}>{a.username}</td>
+                        <td style={{ padding: '4px 8px', fontFamily: 'monospace', userSelect: 'all' }}>{a.password}</td>
+                        <td style={{ padding: '4px 8px' }}><span className={`pill ${a.status === 'available' ? 'available' : 'warn'}`}>{a.status === 'available' ? '사용가능' : '사용중'}</span></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
             <button className="btn-primary" style={{ width: '100%', marginTop: 14 }} onClick={() => setReveal(null)}>닫기</button>
           </div>
         </div>
