@@ -205,6 +205,11 @@ $('#vpnBtn').addEventListener('click', () => {
 async function doConnect() {
   try {
     const r = await api('/me/connect', 'POST', { gameId: selectedGame.id });
+    // VPN 다이얼 실패 (공유기 접속 불가)
+    if (r.dialed === false) {
+      popup(t('conn_fail'), t('conn_fail_msg'));
+      return;
+    }
     connected = true; curGameName = r.game;
     updateVpnUi(true, r.game); startHeartbeat();
     toast(`${gameName(r.game)} ${t('conn_done')}`); loadStatus();

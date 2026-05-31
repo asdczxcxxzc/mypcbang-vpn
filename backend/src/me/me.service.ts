@@ -3,11 +3,15 @@ import {
   ConflictException,
   ForbiddenException,
   Injectable,
+  Logger,
 } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { LifecycleService } from '../lifecycle/lifecycle.service';
+import { TelegramService } from '../telegram/telegram.service';
 import { decrypt } from '../common/crypto.util';
 import { STOP_LIMIT } from '../common/config';
+
+const VPN_FAIL_LIMIT = 3; // 3회 실패 시 오프라인 처리
 
 /**
  * 클라이언트(사용자) 전용.
@@ -17,9 +21,13 @@ import { STOP_LIMIT } from '../common/config';
  */
 @Injectable()
 export class MeService {
+  private readonly logger = new Logger(MeService.name);
+  private vpnFailures = new Map<number, number>(); // vpnIpId → 연속 실패 횟수
+
   constructor(
     private readonly prisma: PrismaService,
     private readonly lifecycle: LifecycleService,
+    private readonly telegram: TelegramService,
   ) {}
 
   private user(userId: number) {
@@ -167,10 +175,13 @@ export class MeService {
           data: { connected: true, lastHeartbeat: now, lastTickAt: now },
         });
         await this.prisma.session.create({ data: { userId, gameId, vpnAccountId: cand.id } });
+        // 연결 성공 시 해당 공유기 실패 카운터 초기화
+        this.vpnFailures.delete(cand.vpnIpId);
         return {
           game: game.name,
           connection: {
             // 클라이언트가 내부적으로 L2TP 연결에만 사용 (앱 화면에 표시 금지)
+            vpnIpId: cand.vpnIpId,
             host: cand.vpnIp.host, port: cand.vpnIp.port, protocol: cand.vpnIp.protocol,
             username: cand.username, password: decrypt(cand.passwordEnc),
             psk: cand.vpnIp.pskEnc ? decrypt(cand.vpnIp.pskEnc) : null,
@@ -210,6 +221,31 @@ export class MeService {
     await this.lifecycle.endConnection(userId); // 내부에서 슬롯 반납
     const after = await this.user(userId);
     return { ok: true, stop: after ? this.stopInfo(after) : null };
+  }
+
+  /** VPN 다이얼 실패 보고 — N회 누적 시 공유기 오프라인 + 텔레그램 알림 */
+  async reportVpnFailed(userId: number, vpnIpId: number) {
+    await this.lifecycle.endConnection(userId);
+    const fails = (this.vpnFailures.get(vpnIpId) ?? 0) + 1;
+    this.vpnFailures.set(vpnIpId, fails);
+    this.logger.warn(`공유기 #${vpnIpId} VPN 연결 실패 ${fails}/${VPN_FAIL_LIMIT}회`);
+
+    if (fails >= VPN_FAIL_LIMIT) {
+      const router = await this.prisma.vpnIp.findUnique({ where: { id: vpnIpId } });
+      if (router && router.online) {
+        await this.prisma.vpnIp.update({ where: { id: vpnIpId }, data: { online: false } });
+        await this.prisma.alert.create({
+          data: {
+            type: 'router_offline',
+            username: '-',
+            message: `공유기 오프라인(연결 실패 ${VPN_FAIL_LIMIT}회) — ${router.ipAddress}${router.region ? ` (${router.region})` : ''}`,
+          },
+        });
+        await this.telegram.send(`⚠️ 공유기 오프라인\nIP: ${router.ipAddress}\n연결 실패 ${VPN_FAIL_LIMIT}회 누적 → 자동 비활성화`);
+        this.vpnFailures.delete(vpnIpId);
+      }
+    }
+    return { ok: true, fails };
   }
 
   private async releaseAccount(accountId: number) {

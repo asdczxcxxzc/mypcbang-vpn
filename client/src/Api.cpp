@@ -17,6 +17,7 @@ namespace {
 std::wstring g_base;          // 예: http://localhost:3000  또는 https://api.mypcbang.com
 std::string  g_token;         // JWT (메모리 보관, JS로 전달 안 함)
 std::string  g_curGame;       // 현재 연결된 게임 표시명
+int          g_curVpnIpId = 0; // 현재 연결 시도한 공유기 ID (실패 보고용)
 
 struct Url { std::wstring scheme, host; INTERNET_PORT port = 0; bool https = false; };
 Url parseUrl(const std::wstring& url) {
@@ -144,6 +145,7 @@ Result handle(const std::string& path, const std::string& method, const std::str
     auto c = data["connection"];
     vpn::Creds cr;
     auto W = [](const std::string& s){ return std::wstring(s.begin(), s.end()); };
+    g_curVpnIpId = c.value("vpnIpId", 0);
     cr.host = W(c.value("host", "")); cr.port = c.value("port", 1701);
     cr.protocol = W(c.value("protocol", "l2tp"));
     cr.username = W(c.value("username", "")); cr.password = W(c.value("password", ""));
@@ -151,6 +153,12 @@ Result handle(const std::string& path, const std::string& method, const std::str
     bool dialed = vpn::connect(cr);
     // 자격증명 즉시 폐기
     security::wipe(cr.password); security::wipe(cr.psk);
+    // VPN 다이얼 실패 시 서버에 보고 (공유기 장애 감지)
+    if (!dialed && g_curVpnIpId > 0) {
+      json failBody; failBody["vpnIpId"] = g_curVpnIpId;
+      handle("/me/vpn-failed", "POST", failBody.dump());
+      g_curVpnIpId = 0;
+    }
     g_curGame = data.value("game", "");
     json out; out["game"] = g_curGame;
     out["plan"] = data.contains("plan") ? data["plan"] : json::object();

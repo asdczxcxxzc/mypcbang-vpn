@@ -8,6 +8,10 @@ class ConnectDto {
   @IsInt() gameId: number;
 }
 
+class VpnFailedDto {
+  @IsInt() vpnIpId: number;
+}
+
 /** 클라이언트(사용자) 전용 — 로그인만 되어 있으면 사용 */
 @Controller('me')
 @UseGuards(JwtAuthGuard)
@@ -44,5 +48,10 @@ export class MeController {
   @Post('disconnect')
   disconnect(@CurrentUser() u: AuthUser) {
     return this.me.disconnect(u.userId);
+  }
+
+  @Post('vpn-failed')
+  vpnFailed(@CurrentUser() u: AuthUser, @Body() dto: VpnFailedDto) {
+    return this.me.reportVpnFailed(u.userId, dto.vpnIpId);
   }
 }
