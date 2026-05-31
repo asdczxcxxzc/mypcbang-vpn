@@ -9,6 +9,7 @@ namespace vpn {
 struct Creds {
   std::wstring host;
   int port = 1701;
+  std::wstring protocol;  // "l2tp" | "pptp"
   std::wstring username;
   std::wstring password;
   std::wstring psk;

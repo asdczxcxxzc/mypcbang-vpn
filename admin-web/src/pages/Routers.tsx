@@ -4,8 +4,28 @@ import { api, Router, NewRouter } from '../api';
 const EMPTY: NewRouter = {
   ipAddress: '', host: '', port: 1701, protocol: 'l2tp', psk: '',
   adminUrl: '', adminUsername: '', adminPassword: '',
-  brand: 'iptime', model: '', region: '', pcName: '', memo: '',
+  brand: 'iptime', model: '', region: '', memo: '',
 };
+
+type SortKey = 'ipAddress' | 'region' | 'brand' | 'protocol' | 'online' | 'availableAccounts';
+type SortDir = 'asc' | 'desc';
+
+function exportCsv(routers: Router[]) {
+  const headers = ['상태', '공인IP', '지역', '브랜드', '모델', '포트', '프로토콜', '가용계정', '전체계정', '비고'];
+  const rows = routers.map(r => [
+    r.online ? '온라인' : '오프라인',
+    r.ipAddress, r.region ?? '', r.brand ?? '', r.model ?? '',
+    String(r.port), r.protocol,
+    String(r.availableAccounts), String(r.totalAccounts),
+    r.memo ?? '',
+  ]);
+  const csv = [headers, ...rows].map(r => r.map(v => `"${v}"`).join(',')).join('\n');
+  const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `routers_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click(); URL.revokeObjectURL(url);
+}
 
 export default function Routers() {
   const [routers, setRouters] = useState<Router[]>([]);
@@ -14,6 +34,8 @@ export default function Routers() {
   const [err, setErr] = useState('');
   const [reveal, setReveal] = useState<any | null>(null);
   const [search, setSearch] = useState('');
+  const [sortKey, setSortKey] = useState<SortKey>('ipAddress');
+  const [sortDir, setSortDir] = useState<SortDir>('asc');
 
   async function load() { setRouters(await api.ips()); }
   useEffect(() => {
@@ -26,6 +48,20 @@ export default function Routers() {
     setForm((f) => ({ ...f, [k]: v }));
   }
   function resetForm() { setForm({ ...EMPTY, brand: form.brand }); setEditId(null); setErr(''); }
+
+  function handleSort(key: SortKey) {
+    if (sortKey === key) setSortDir(d => d === 'asc' ? 'desc' : 'asc');
+    else { setSortKey(key); setSortDir('asc'); }
+  }
+
+  function SortTh({ k, label }: { k: SortKey; label: string }) {
+    const active = sortKey === k;
+    return (
+      <th onClick={() => handleSort(k)} style={{ cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap' }}>
+        {label} {active ? (sortDir === 'asc' ? '▲' : '▼') : '↕'}
+      </th>
+    );
+  }
 
   async function submit(e: React.FormEvent) {
     e.preventDefault(); setErr('');
@@ -49,7 +85,7 @@ export default function Routers() {
       ipAddress: r.ipAddress, host: r.host, port: r.port, protocol: r.protocol,
       psk: c.psk ?? '', adminUrl: r.adminUrl ?? '', adminUsername: r.adminUsername ?? '',
       adminPassword: c.adminPassword ?? '', brand: r.brand ?? 'iptime', model: r.model ?? '',
-      region: r.region ?? '', pcName: r.pcName ?? '', memo: r.memo ?? '',
+      region: r.region ?? '', memo: r.memo ?? '',
     });
     setEditId(r.id); setErr(''); window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -62,11 +98,21 @@ export default function Routers() {
 
   const view = useMemo(() => {
     const q = search.trim().toLowerCase();
-    if (!q) return routers;
-    return routers.filter((r) =>
-      [r.ipAddress, r.region, r.brand, r.model].filter(Boolean)
-        .some((v) => String(v).toLowerCase().includes(q)));
-  }, [routers, search]);
+    let filtered = q
+      ? routers.filter(r => [r.ipAddress, r.region, r.brand, r.model].filter(Boolean).some(v => String(v).toLowerCase().includes(q)))
+      : [...routers];
+
+    filtered.sort((a, b) => {
+      let av: any = a[sortKey as keyof Router];
+      let bv: any = b[sortKey as keyof Router];
+      if (typeof av === 'boolean') { av = av ? 1 : 0; bv = bv ? 1 : 0; }
+      if (typeof av === 'number') return sortDir === 'asc' ? av - bv : bv - av;
+      return sortDir === 'asc'
+        ? String(av ?? '').localeCompare(String(bv ?? ''))
+        : String(bv ?? '').localeCompare(String(av ?? ''));
+    });
+    return filtered;
+  }, [routers, search, sortKey, sortDir]);
 
   return (
     <div>
@@ -112,10 +158,6 @@ export default function Routers() {
               <input value={form.model} onChange={(e) => set('model', e.target.value)} placeholder="A3004" /></div>
             <div className="field" style={{ maxWidth: 130 }}><label>지역(선택)</label>
               <input value={form.region} onChange={(e) => set('region', e.target.value)} placeholder="서울" /></div>
-            <div className="field" style={{ maxWidth: 160 }}><label>PC 이름(선택)</label>
-              <input value={form.pcName} onChange={(e) => set('pcName', e.target.value)} placeholder="홍길동PC" /></div>
-          </div>
-          <div className="row">
             <div className="field"><label>비고(선택)</label>
               <input value={form.memo} onChange={(e) => set('memo', e.target.value)} placeholder="메모 입력" /></div>
             <button className="btn-primary">{editId ? '수정 저장' : '공유기 추가'}</button>
@@ -128,18 +170,26 @@ export default function Routers() {
       <div className="card">
         <div className="topbar">
           <h3 style={{ margin: 0 }}>등록된 공유기 ({view.length})</h3>
-          <input style={{ width: 220 }} placeholder="IP·지역·브랜드 검색" value={search} onChange={(e) => setSearch(e.target.value)} />
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+            <input style={{ width: 200 }} placeholder="IP·지역·브랜드 검색" value={search} onChange={(e) => setSearch(e.target.value)} />
+            <button className="btn-ghost" onClick={() => exportCsv(view)}>📥 엑셀 추출</button>
+          </div>
         </div>
         <table>
           <thead><tr>
-            <th>상태</th><th>공인 IP</th><th>PC 이름</th><th>지역</th><th>브랜드</th><th>포트/프로토콜</th><th>계정(가용/전체)</th><th>비고</th><th></th>
+            <SortTh k="online" label="상태" />
+            <SortTh k="ipAddress" label="공인 IP" />
+            <SortTh k="region" label="지역" />
+            <SortTh k="brand" label="브랜드" />
+            <SortTh k="protocol" label="포트/프로토콜" />
+            <SortTh k="availableAccounts" label="계정(가용/전체)" />
+            <th>비고</th><th></th>
           </tr></thead>
           <tbody>
             {view.map((r) => (
               <tr key={r.id} style={editId === r.id ? { background: 'var(--card-hover)' } : undefined}>
                 <td><span className={`pill ${r.online ? 'available' : 'warn'}`}>{r.online ? '● 온라인' : '● 오프라인'}</span></td>
                 <td className="mono">{r.ipAddress}</td>
-                <td>{r.pcName ?? '-'}</td>
                 <td>{r.region ?? '-'}</td>
                 <td>{r.brand ?? '-'}</td>
                 <td className="mono">{r.port}/{r.protocol}</td>
@@ -152,7 +202,7 @@ export default function Routers() {
                 </td>
               </tr>
             ))}
-            {view.length === 0 && <tr><td colSpan={9} className="empty">등록된 공유기가 없습니다.</td></tr>}
+            {view.length === 0 && <tr><td colSpan={8} className="empty">등록된 공유기가 없습니다.</td></tr>}
           </tbody>
         </table>
       </div>

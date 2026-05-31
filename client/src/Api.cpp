@@ -145,6 +145,7 @@ Result handle(const std::string& path, const std::string& method, const std::str
     vpn::Creds cr;
     auto W = [](const std::string& s){ return std::wstring(s.begin(), s.end()); };
     cr.host = W(c.value("host", "")); cr.port = c.value("port", 1701);
+    cr.protocol = W(c.value("protocol", "l2tp"));
     cr.username = W(c.value("username", "")); cr.password = W(c.value("password", ""));
     cr.psk = W(c.value("psk", ""));
     bool dialed = vpn::connect(cr);
