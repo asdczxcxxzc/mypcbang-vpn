@@ -2,6 +2,7 @@
 set -e
 
 # ── 환경변수 설정 ──────────────────────────────────
+mkdir -p /var/www/vpn-backend/data
 cat > /var/www/vpn-backend/.env << 'ENVEOF'
 DATABASE_URL=file:/var/www/vpn-backend/data/vpn.db
 JWT_SECRET=29fd20c43e54bff761e758ff70cd8271a95c8011ae155da7bc7c63ada149762b4365f77fd826bb0b93ba03cfdc0b75f3
