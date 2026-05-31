@@ -13,8 +13,8 @@ const KEYLEN = 16;
 const key = crypto.randomBytes(KEYLEN);
 for (let i = 0; i < KEYLEN; i++) key[i] = key[i] || 0x5C;
 
-// 민감한 코드만 암호화 내장. 게임 이미지(jpg/png/webp)는 web/ 폴더로 배포(비밀 아님).
-const exts = ['.html', '.js', '.css', '.svg'];
+// 모든 파일(이미지 포함) exe에 내장 → 폴더 없이 exe 단독 배포 가능.
+const exts = ['.html', '.js', '.css', '.svg', '.png', '.jpg', '.jpeg', '.webp'];
 const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp' };
 
 function walk(dir, base = '') {

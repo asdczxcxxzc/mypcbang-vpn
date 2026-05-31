@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{665DA60F-6E94-30A4-89A0-3F3E676E3783}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>wil-populate</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v145</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\7b13f05dda4e6d94c194e3b58fdf004f\wil-populate-mkdir.rule">
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Creating directories for 'wil-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -Dcfgdir=/Debug -P C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/tmp/wil-populate-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/Debug/wil-populate-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-mkdir</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\7b13f05dda4e6d94c194e3b58fdf004f\wil-populate-download.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Performing download step (download, verify and extract) for 'wil-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/download-wil-populate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/verify-wil-populate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/extract-wil-populate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/Debug/wil-populate-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\download-wil-populate.cmake;C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\wil-populate-urlinfo.txt;C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-mkdir;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-download</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\7b13f05dda4e6d94c194e3b58fdf004f\wil-populate-update.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No update step for 'wil-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/Debug/wil-populate-update
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\wil-populate-update-info.txt;C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-download;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-update</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\7b13f05dda4e6d94c194e3b58fdf004f\wil-populate-patch.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No patch step for 'wil-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/Debug/wil-populate-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\wil-populate-patch-info.txt;C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-update;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-patch</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\7b13f05dda4e6d94c194e3b58fdf004f\wil-populate-configure.rule">
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No configure step for 'wil-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/Debug/wil-populate-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\tmp\wil-populate-cfgcmd.txt;C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-patch;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-configure</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\7b13f05dda4e6d94c194e3b58fdf004f\wil-populate-build.rule">
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No build step for 'wil-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/Debug/wil-populate-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-configure;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-build</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\7b13f05dda4e6d94c194e3b58fdf004f\wil-populate-install.rule">
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No install step for 'wil-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/Debug/wil-populate-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-build;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-install</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\7b13f05dda4e6d94c194e3b58fdf004f\wil-populate-test.rule">
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">No test step for 'wil-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/Debug/wil-populate-test
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-install;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-test</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\91d50eb385f7c3d9b810b17a8b915af1\wil-populate-complete.rule">
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Completed 'wil-populate'</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E make_directory C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/CMakeFiles/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/CMakeFiles/Debug/wil-populate-complete
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/Debug/wil-populate-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-install;C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-mkdir;C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-download;C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-update;C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-patch;C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-configure;C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-build;C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\src\wil-populate-stamp\Debug\wil-populate-test;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\Debug\wil-populate-complete</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\7c901a4f81cbb94465ad59894ddbe8dd\wil-populate.rule">
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\Debug\wil-populate-complete;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\wil-populate</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild -BC:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild --check-stamp-file C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.2\Modules\CMakeDetermineSystem.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.2\Modules\CMakeGenericSystem.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.2\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.2\Modules\CMakeSystem.cmake.in;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.2\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.2\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.2\Modules\ExternalProject.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.2\Modules\ExternalProject\PatchInfo.txt.in;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.2\Modules\ExternalProject\RepositoryInfo.txt.in;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.2\Modules\ExternalProject\UpdateInfo.txt.in;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.2\Modules\ExternalProject\cfgcmd.txt.in;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.2\Modules\ExternalProject\download.cmake.in;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.2\Modules\ExternalProject\extractfile.cmake.in;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.2\Modules\ExternalProject\mkdirs.cmake.in;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.2\Modules\ExternalProject\shared_internal_commands.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.2\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.2\Modules\Platform\Windows.cmake;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.2\Modules\Platform\WindowsPaths.cmake;C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\4.2.3-msvc3\CMakeSystem.cmake;C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\wil-populate-prefix\tmp\wil-populate-mkdirs.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\wil-populate">
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\ZERO_CHECK.vcxproj">
+      <Project>{B5F283E8-106A-3173-889D-728E32851E90}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

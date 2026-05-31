@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\webview2-subbuild\CMakeFiles\5c1d6c27bbea1b4e55ef2ed8e5d6fd52\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{40DCAAF6-F08F-348E-8B5F-63FA6A26AE49}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

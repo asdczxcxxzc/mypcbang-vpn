@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/CMakeFiles/wil-populate"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/CMakeFiles/7c901a4f81cbb94465ad59894ddbe8dd/wil-populate.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/CMakeFiles/91d50eb385f7c3d9b810b17a8b915af1/wil-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/CMakeFiles/7b13f05dda4e6d94c194e3b58fdf004f/wil-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/CMakeFiles/7b13f05dda4e6d94c194e3b58fdf004f/wil-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/CMakeFiles/7b13f05dda4e6d94c194e3b58fdf004f/wil-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/CMakeFiles/7b13f05dda4e6d94c194e3b58fdf004f/wil-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/CMakeFiles/7b13f05dda4e6d94c194e3b58fdf004f/wil-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/CMakeFiles/7b13f05dda4e6d94c194e3b58fdf004f/wil-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/CMakeFiles/7b13f05dda4e6d94c194e3b58fdf004f/wil-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/CMakeFiles/7b13f05dda4e6d94c194e3b58fdf004f/wil-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"wil-populate"
+		],
+		"name" : "wil-populate"
+	}
+}

@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/json-subbuild/CMakeFiles/json-populate"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/json-subbuild/CMakeFiles/df6288613105a8db0a24e0f3b02d4603/json-populate.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/json-subbuild/CMakeFiles/b072d6fd7d59177d31b4f68067f0edf4/json-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/json-subbuild/CMakeFiles/a73a683aca7c8c1fcba4c5de084f5f3e/json-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/json-subbuild/CMakeFiles/a73a683aca7c8c1fcba4c5de084f5f3e/json-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/json-subbuild/CMakeFiles/a73a683aca7c8c1fcba4c5de084f5f3e/json-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/json-subbuild/CMakeFiles/a73a683aca7c8c1fcba4c5de084f5f3e/json-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/json-subbuild/CMakeFiles/a73a683aca7c8c1fcba4c5de084f5f3e/json-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/json-subbuild/CMakeFiles/a73a683aca7c8c1fcba4c5de084f5f3e/json-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/json-subbuild/CMakeFiles/a73a683aca7c8c1fcba4c5de084f5f3e/json-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/json-subbuild/CMakeFiles/a73a683aca7c8c1fcba4c5de084f5f3e/json-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"json-populate"
+		],
+		"name" : "json-populate"
+	}
+}

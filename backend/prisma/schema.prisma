@@ -80,6 +80,8 @@ model VpnIp {
   brand         String?
   model         String?
   region        String?
+  pcName        String?  // PC 이름
+  memo          String?  // 비고
   online        Boolean  @default(true)
   lastCheckedAt DateTime?
 

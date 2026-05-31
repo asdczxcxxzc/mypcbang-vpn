@@ -36,9 +36,8 @@ Name: "korean"; MessagesFile: "compiler:Languages\Korean.isl"
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "..\client\build\Release\{#AppExe}"; DestDir: "{app}"; Flags: ignoreversion
-; 게임 이미지(코드는 exe에 암호화 내장, 이미지는 파일로)
-Source: "..\client\web\img\*"; DestDir: "{app}\web\img"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\client\out\build\x64-Release\Release\{#AppExe}"; DestDir: "{app}"; Flags: ignoreversion
+; 이미지는 exe에 내장됨 — 별도 폴더 불필요
 ; WebView2 런타임 부트스트래퍼 (Win10 등 미설치 PC용 — 임시폴더에 풀고 설치 후 삭제)
 Source: "MicrosoftEdgeWebview2Setup.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall
 

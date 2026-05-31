@@ -4,7 +4,7 @@ import { api, Router, NewRouter } from '../api';
 const EMPTY: NewRouter = {
   ipAddress: '', host: '', port: 1701, protocol: 'l2tp', psk: '',
   adminUrl: '', adminUsername: '', adminPassword: '',
-  brand: 'iptime', model: '', region: '',
+  brand: 'iptime', model: '', region: '', pcName: '', memo: '',
 };
 
 export default function Routers() {
@@ -48,7 +48,8 @@ export default function Routers() {
     setForm({
       ipAddress: r.ipAddress, host: r.host, port: r.port, protocol: r.protocol,
       psk: c.psk ?? '', adminUrl: r.adminUrl ?? '', adminUsername: r.adminUsername ?? '',
-      adminPassword: c.adminPassword ?? '', brand: r.brand ?? 'iptime', model: r.model ?? '', region: r.region ?? '',
+      adminPassword: c.adminPassword ?? '', brand: r.brand ?? 'iptime', model: r.model ?? '',
+      region: r.region ?? '', pcName: r.pcName ?? '', memo: r.memo ?? '',
     });
     setEditId(r.id); setErr(''); window.scrollTo({ top: 0, behavior: 'smooth' });
   }
@@ -111,6 +112,12 @@ export default function Routers() {
               <input value={form.model} onChange={(e) => set('model', e.target.value)} placeholder="A3004" /></div>
             <div className="field" style={{ maxWidth: 130 }}><label>지역(선택)</label>
               <input value={form.region} onChange={(e) => set('region', e.target.value)} placeholder="서울" /></div>
+            <div className="field" style={{ maxWidth: 160 }}><label>PC 이름(선택)</label>
+              <input value={form.pcName} onChange={(e) => set('pcName', e.target.value)} placeholder="홍길동PC" /></div>
+          </div>
+          <div className="row">
+            <div className="field"><label>비고(선택)</label>
+              <input value={form.memo} onChange={(e) => set('memo', e.target.value)} placeholder="메모 입력" /></div>
             <button className="btn-primary">{editId ? '수정 저장' : '공유기 추가'}</button>
             {editId && <button type="button" className="btn-ghost" onClick={resetForm}>취소</button>}
           </div>
@@ -125,17 +132,19 @@ export default function Routers() {
         </div>
         <table>
           <thead><tr>
-            <th>상태</th><th>공인 IP</th><th>지역</th><th>브랜드</th><th>포트/프로토콜</th><th>계정(가용/전체)</th><th></th>
+            <th>상태</th><th>공인 IP</th><th>PC 이름</th><th>지역</th><th>브랜드</th><th>포트/프로토콜</th><th>계정(가용/전체)</th><th>비고</th><th></th>
           </tr></thead>
           <tbody>
             {view.map((r) => (
               <tr key={r.id} style={editId === r.id ? { background: 'var(--card-hover)' } : undefined}>
                 <td><span className={`pill ${r.online ? 'available' : 'warn'}`}>{r.online ? '● 온라인' : '● 오프라인'}</span></td>
                 <td className="mono">{r.ipAddress}</td>
+                <td>{r.pcName ?? '-'}</td>
                 <td>{r.region ?? '-'}</td>
                 <td>{r.brand ?? '-'}</td>
                 <td className="mono">{r.port}/{r.protocol}</td>
                 <td>{r.availableAccounts}/{r.totalAccounts}</td>
+                <td style={{ maxWidth: 150, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{r.memo ?? '-'}</td>
                 <td style={{ textAlign: 'right', whiteSpace: 'nowrap' }}>
                   <button className="btn-ghost" style={{ marginRight: 4 }} onClick={() => startEdit(r)}>수정</button>
                   <button className="btn-ghost" style={{ marginRight: 4 }} onClick={() => showCreds(r.id)}>설정</button>
@@ -143,7 +152,7 @@ export default function Routers() {
                 </td>
               </tr>
             ))}
-            {view.length === 0 && <tr><td colSpan={7} className="empty">등록된 공유기가 없습니다.</td></tr>}
+            {view.length === 0 && <tr><td colSpan={9} className="empty">등록된 공유기가 없습니다.</td></tr>}
           </tbody>
         </table>
       </div>

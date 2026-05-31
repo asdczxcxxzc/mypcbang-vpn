@@ -26,6 +26,8 @@ class CreateRouterDto {
   @IsOptional() @IsString() brand?: string;
   @IsOptional() @IsString() model?: string;
   @IsOptional() @IsString() region?: string;
+  @IsOptional() @IsString() pcName?: string;
+  @IsOptional() @IsString() memo?: string;
 }
 
 class UpdateRouterDto {
@@ -40,6 +42,8 @@ class UpdateRouterDto {
   @IsOptional() @IsString() brand?: string;
   @IsOptional() @IsString() model?: string;
   @IsOptional() @IsString() region?: string;
+  @IsOptional() @IsString() pcName?: string;
+  @IsOptional() @IsString() memo?: string;
 }
 
 @Controller('ips')

@@ -251,7 +251,11 @@ static HRESULT onResourceRequested(ICoreWebView2Environment* env, ICoreWebView2W
 
 // WebView2 초기화
 static void initWebView() {
-  CreateCoreWebView2EnvironmentWithOptions(nullptr, nullptr, nullptr,
+  // WebView2 캐시를 AppData\Local\mypcbang 에 저장 → exe 옆 폴더 생성 방지
+  wchar_t appdata[MAX_PATH]{};
+  GetEnvironmentVariableW(L"LOCALAPPDATA", appdata, MAX_PATH);
+  std::wstring udFolder = std::wstring(appdata) + L"\\mypcbang\\wv2";
+  CreateCoreWebView2EnvironmentWithOptions(nullptr, udFolder.c_str(), nullptr,
     Callback<ICoreWebView2CreateCoreWebView2EnvironmentCompletedHandler>(
       [](HRESULT, ICoreWebView2Environment* env) -> HRESULT {
         env->CreateCoreWebView2Controller(g_hwnd,
@@ -336,7 +340,7 @@ int WINAPI wWinMain(HINSTANCE hInst, HINSTANCE, PWSTR, int) {
 
   // 3) 서버 주소(문자열 암호화 → 복호화). 운영 시 HTTPS 도메인.
   //    개발: L"http://localhost:3000"  /  운영: L"https://api.mypcbang.com"
-  api::setBaseUrl(L"http://localhost:3000");
+  api::setBaseUrl(L"https://api.mypcbang.com");
 
   // 4) 창 등록/생성 (테두리 없음)
   HICON appIcon = LoadIconW(hInst, MAKEINTRESOURCEW(1));   // app.rc 의 MY 아이콘

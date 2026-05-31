@@ -1,0 +1,152 @@
+^C:\USERS\C1\DESKTOP\MYPCBANG_PROJECT\VPN-SYSTEM\CLIENT\OUT\BUILD\X64-RELEASE\_DEPS\WIL-SUBBUILD\CMAKEFILES\7B13F05DDA4E6D94C194E3B58FDF004F\WIL-POPULATE-MKDIR.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -Dcfgdir=/Debug -P C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/tmp/wil-populate-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/Debug/wil-populate-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\C1\DESKTOP\MYPCBANG_PROJECT\VPN-SYSTEM\CLIENT\OUT\BUILD\X64-RELEASE\_DEPS\WIL-SUBBUILD\CMAKEFILES\7B13F05DDA4E6D94C194E3B58FDF004F\WIL-POPULATE-DOWNLOAD.RULE
+setlocal
+cd C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/download-wil-populate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/verify-wil-populate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/extract-wil-populate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/Debug/wil-populate-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\C1\DESKTOP\MYPCBANG_PROJECT\VPN-SYSTEM\CLIENT\OUT\BUILD\X64-RELEASE\_DEPS\WIL-SUBBUILD\CMAKEFILES\7B13F05DDA4E6D94C194E3B58FDF004F\WIL-POPULATE-UPDATE.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/Debug/wil-populate-update
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\C1\DESKTOP\MYPCBANG_PROJECT\VPN-SYSTEM\CLIENT\OUT\BUILD\X64-RELEASE\_DEPS\WIL-SUBBUILD\CMAKEFILES\7B13F05DDA4E6D94C194E3B58FDF004F\WIL-POPULATE-PATCH.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/Debug/wil-populate-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\C1\DESKTOP\MYPCBANG_PROJECT\VPN-SYSTEM\CLIENT\OUT\BUILD\X64-RELEASE\_DEPS\WIL-SUBBUILD\CMAKEFILES\7B13F05DDA4E6D94C194E3B58FDF004F\WIL-POPULATE-CONFIGURE.RULE
+setlocal
+cd C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/Debug/wil-populate-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\C1\DESKTOP\MYPCBANG_PROJECT\VPN-SYSTEM\CLIENT\OUT\BUILD\X64-RELEASE\_DEPS\WIL-SUBBUILD\CMAKEFILES\7B13F05DDA4E6D94C194E3B58FDF004F\WIL-POPULATE-BUILD.RULE
+setlocal
+cd C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/Debug/wil-populate-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\C1\DESKTOP\MYPCBANG_PROJECT\VPN-SYSTEM\CLIENT\OUT\BUILD\X64-RELEASE\_DEPS\WIL-SUBBUILD\CMAKEFILES\7B13F05DDA4E6D94C194E3B58FDF004F\WIL-POPULATE-INSTALL.RULE
+setlocal
+cd C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/Debug/wil-populate-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\C1\DESKTOP\MYPCBANG_PROJECT\VPN-SYSTEM\CLIENT\OUT\BUILD\X64-RELEASE\_DEPS\WIL-SUBBUILD\CMAKEFILES\7B13F05DDA4E6D94C194E3B58FDF004F\WIL-POPULATE-TEST.RULE
+setlocal
+cd C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/Debug/wil-populate-test
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\C1\DESKTOP\MYPCBANG_PROJECT\VPN-SYSTEM\CLIENT\OUT\BUILD\X64-RELEASE\_DEPS\WIL-SUBBUILD\CMAKEFILES\91D50EB385F7C3D9B810B17A8B915AF1\WIL-POPULATE-COMPLETE.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E make_directory C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/CMakeFiles/Debug
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/CMakeFiles/Debug/wil-populate-complete
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E touch C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/wil-populate-prefix/src/wil-populate-stamp/Debug/wil-populate-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\C1\DESKTOP\MYPCBANG_PROJECT\VPN-SYSTEM\CLIENT\OUT\BUILD\X64-RELEASE\_DEPS\WIL-SUBBUILD\CMAKEFILES\7C901A4F81CBB94465AD59894DDBE8DD\WIL-POPULATE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\C1\DESKTOP\MYPCBANG_PROJECT\VPN-SYSTEM\CLIENT\OUT\BUILD\X64-RELEASE\_DEPS\WIL-SUBBUILD\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild -BC:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild --check-stamp-file C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/wil-subbuild/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

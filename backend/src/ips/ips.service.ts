@@ -26,6 +26,8 @@ export interface CreateRouterInput {
   brand?: string;
   model?: string;
   region?: string;
+  pcName?: string;
+  memo?: string;
 }
 
 /**
@@ -47,6 +49,8 @@ export class IpsService {
     brand: true,
     model: true,
     region: true,
+    pcName: true,
+    memo: true,
     online: true,
     lastCheckedAt: true,
   };
@@ -77,6 +81,8 @@ export class IpsService {
         brand: input.brand,
         model: input.model,
         region: input.region,
+        pcName: input.pcName,
+        memo: input.memo,
       },
       select: this.publicSelect,
     });
@@ -135,6 +141,8 @@ export class IpsService {
     if (patch.brand !== undefined) data.brand = patch.brand;
     if (patch.model !== undefined) data.model = patch.model;
     if (patch.region !== undefined) data.region = patch.region;
+    if (patch.pcName !== undefined) data.pcName = patch.pcName;
+    if (patch.memo !== undefined) data.memo = patch.memo;
     return this.prisma.vpnIp.update({
       where: { id },
       data,

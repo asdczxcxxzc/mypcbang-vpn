@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\7b13f05dda4e6d94c194e3b58fdf004f\wil-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\7b13f05dda4e6d94c194e3b58fdf004f\wil-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\7b13f05dda4e6d94c194e3b58fdf004f\wil-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\7b13f05dda4e6d94c194e3b58fdf004f\wil-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\7b13f05dda4e6d94c194e3b58fdf004f\wil-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\7b13f05dda4e6d94c194e3b58fdf004f\wil-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\7b13f05dda4e6d94c194e3b58fdf004f\wil-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\7b13f05dda4e6d94c194e3b58fdf004f\wil-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\91d50eb385f7c3d9b810b17a8b915af1\wil-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\7c901a4f81cbb94465ad59894ddbe8dd\wil-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\C1\Desktop\mypcbang_project\vpn-system\client\out\build\x64-Release\_deps\wil-subbuild\CMakeFiles\wil-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{94F2117C-3A58-35ED-BB02-F2B2C4D1D724}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

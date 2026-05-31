@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/webview2-populate"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/5c1d6c27bbea1b4e55ef2ed8e5d6fd52/webview2-populate.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/49ceeae900fee6199df5ecdb11fab0ad/webview2-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/be77776322b6ffc1bc46c28767c10c4e/webview2-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/be77776322b6ffc1bc46c28767c10c4e/webview2-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/be77776322b6ffc1bc46c28767c10c4e/webview2-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/be77776322b6ffc1bc46c28767c10c4e/webview2-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/be77776322b6ffc1bc46c28767c10c4e/webview2-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/be77776322b6ffc1bc46c28767c10c4e/webview2-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/be77776322b6ffc1bc46c28767c10c4e/webview2-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/be77776322b6ffc1bc46c28767c10c4e/webview2-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"webview2-populate"
+		],
+		"name" : "webview2-populate"
+	}
+}

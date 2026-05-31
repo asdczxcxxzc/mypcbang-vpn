@@ -97,11 +97,13 @@ export type NewRouter = {
   ipAddress: string; host?: string; port: number; protocol?: string; psk?: string;
   adminUrl?: string; adminUsername?: string; adminPassword?: string;
   brand?: string; model?: string; region?: string;
+  pcName?: string; memo?: string;
 };
 export type Router = {
   id: number; ipAddress: string; host: string; port: number; protocol: string;
   adminUrl: string | null; adminUsername: string | null;
   brand: string | null; model: string | null; region: string | null;
+  pcName: string | null; memo: string | null;
   online: boolean; lastCheckedAt: string | null;
   totalAccounts: number; availableAccounts: number;
 };

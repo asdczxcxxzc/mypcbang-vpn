@@ -1,0 +1,14 @@
+# Target labels
+ webview2-populate
+# Source files and their labels
+C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/webview2-populate
+C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/5c1d6c27bbea1b4e55ef2ed8e5d6fd52/webview2-populate.rule
+C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/49ceeae900fee6199df5ecdb11fab0ad/webview2-populate-complete.rule
+C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/be77776322b6ffc1bc46c28767c10c4e/webview2-populate-build.rule
+C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/be77776322b6ffc1bc46c28767c10c4e/webview2-populate-configure.rule
+C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/be77776322b6ffc1bc46c28767c10c4e/webview2-populate-download.rule
+C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/be77776322b6ffc1bc46c28767c10c4e/webview2-populate-install.rule
+C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/be77776322b6ffc1bc46c28767c10c4e/webview2-populate-mkdir.rule
+C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/be77776322b6ffc1bc46c28767c10c4e/webview2-populate-patch.rule
+C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/be77776322b6ffc1bc46c28767c10c4e/webview2-populate-test.rule
+C:/Users/C1/Desktop/mypcbang_project/vpn-system/client/out/build/x64-Release/_deps/webview2-subbuild/CMakeFiles/be77776322b6ffc1bc46c28767c10c4e/webview2-populate-update.rule
