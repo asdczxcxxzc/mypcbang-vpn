@@ -1,0 +1,3 @@
+#include <windows.h>
+// 프로그램 아이콘 (MY, 연한 파란색)
+1 ICON "app.ico"

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mypcbang</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- 창 컨트롤 — macOS 신호등 -->
+  <div id="winctl">
+    <button class="traffic close" id="winClose" title="Close"></button>
+    <button class="traffic min" id="winMin" title="Minimize"></button>
+    <button class="traffic zoom"></button>
+  </div>
+
+  <!-- ===== 로그인 ===== -->
+  <div id="login" class="login-wrap dragzone">
+    <form class="login-card fade-in dragzone" id="loginForm">
+      <!-- 언어 선택 -->
+      <div class="lang-select" id="langSelect">
+        <button type="button" data-lang="ko">한국어</button>
+        <button type="button" data-lang="zh">中文</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <div class="logo-mark" style="margin-bottom:18px">M</div>
+      <h2 style="font-size:22px;font-weight:800"><span data-i18n="login_title"></span></h2>
+      <p class="muted" style="margin:6px 0 22px" data-i18n="login_sub"></p>
+      <div class="field"><label data-i18n="username"></label><input id="lid" autocomplete="username" /></div>
+      <div class="field"><label data-i18n="password"></label><input id="lpw" type="password" autocomplete="current-password" placeholder="••••••••" /></div>
+      <label class="remember"><input type="checkbox" id="rememberChk" /> <span data-i18n="auto_login"></span></label>
+      <div id="loginErr" class="err hidden"></div>
+      <button class="btn-accent" style="width:100%;margin-top:6px" type="submit" data-i18n="login_btn"></button>
+    </form>
+  </div>
+
+  <!-- ===== 메인 앱 ===== -->
+  <div id="app" class="app hidden">
+    <aside class="sidebar dragzone">
+      <div class="logo-mark">M</div>
+      <button class="nav-btn active" data-i18n-title="nav_home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></button>
+      <button class="nav-btn" id="navSettings" data-i18n-title="nav_settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.5-2-3.4-2.3 1a7 7 0 0 0-1.7-1L14.5 3h-5l-.4 2.6a7 7 0 0 0-1.7 1l-2.3-1-2 3.4L3 11a7 7 0 0 0 0 2l-2 1.5 2 3.4 2.3-1a7 7 0 0 0 1.7 1L9.5 21h5l.4-2.6a7 7 0 0 0 1.7-1l2.3 1 2-3.4-2-1.5a7 7 0 0 0 .1-1z"/></svg></button>
+      <div class="spacer"></div>
+      <button class="nav-btn" id="navLogout" data-i18n-title="nav_logout"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></button>
+    </aside>
+
+    <main class="main">
+      <div class="topbar dragzone">
+        <div class="brand dragzone"><span>my<span class="accent-text">pcbang</span></span></div>
+        <div class="tabs">
+          <button class="tab active" data-i18n="nav_home"></button>
+        </div>
+        <div class="top-right">
+          <button class="icon-btn" id="paletteBtn" data-i18n-title="theme"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 2a10 10 0 1 0 0 20 2.5 2.5 0 0 0 2-4 2.5 2.5 0 0 1 2-4h2a4 4 0 0 0 4-4 10 10 0 0 0-12-8z"/></svg></button>
+          <div class="user-chip">
+            <div class="avatar" id="uAvatar">M</div>
+            <div class="meta"><b id="uName">user</b><br/><span id="uTime"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="col">
+          <div class="hero fade-in dragzone">
+            <div class="hero-deco"></div><div class="hero-deco2"></div>
+            <h1><span data-i18n="hello"></span> <span id="heroName">user</span><span data-i18n="hello_suffix"></span></h1>
+            <p id="heroSub" data-i18n="hero_sub"></p>
+            <div class="hero-actions">
+              <button class="btn-dark press" id="vpnBtn"><span id="vpnBtnText"></span></button>
+              <span id="vpnState" style="font-weight:700"></span>
+            </div>
+          </div>
+
+          <div class="card fade-in" style="animation-delay:.05s">
+            <div class="card-head"><h3 data-i18n="select_game"></h3><span class="muted" id="gamesHint" data-i18n="select_game_hint"></span></div>
+            <div class="game-grid" id="gameGrid"></div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card fade-in" style="animation-delay:.1s">
+            <div class="card-head"><h3 data-i18n="conn_status"></h3></div>
+            <div class="status-big">
+              <div class="status-ring" id="statusRing">
+                <svg class="power" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+                  <path d="M12 3 V11.5"/>
+                  <path d="M6.3 7 A8 8 0 1 0 17.7 7"/>
+                </svg>
+              </div>
+              <div style="font-weight:800;font-size:16px" id="statusLabel"></div>
+              <div class="muted" id="statusGame"></div>
+            </div>
+            <div style="margin-top:14px">
+              <div class="kv"><span class="k" data-i18n="plan"></span><span class="v" id="kvPlan">-</span></div>
+              <div class="kv"><span class="k" data-i18n="remain"></span><span class="v" id="kvRemain">-</span></div>
+              <div class="kv" id="kvStopRow"><span class="k" data-i18n="stops"></span><span class="v" id="kvStop">-</span></div>
+            </div>
+          </div>
+
+          <div class="card fade-in" style="animation-delay:.13s">
+            <div class="card-head"><h3 data-i18n="usage_title"></h3><span class="muted" data-i18n="usage_sub"></span></div>
+            <div id="usageChart" class="chart"></div>
+          </div>
+
+          <div class="card fade-in" style="animation-delay:.18s">
+            <div class="card-head"><h3 data-i18n="notice"></h3></div>
+            <div class="muted" style="line-height:1.8;font-size:12px" id="noticeBody"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- 설정(테마) 모달 -->
+  <div id="settingsModal" class="overlay hidden">
+    <div class="modal pop" style="width:420px;text-align:left">
+      <h2 style="text-align:center" data-i18n="theme_title"></h2>
+      <p style="text-align:center" data-i18n="theme_sub"></p>
+      <div class="muted" style="margin-bottom:8px" data-i18n="accent"></div>
+      <div class="palette" id="palette"></div>
+      <div class="muted" style="margin:16px 0 6px" data-i18n="custom"></div>
+      <input type="color" id="customColor" style="width:100%;height:42px;border:none;background:none;border-radius:12px" />
+      <div class="muted" style="margin:16px 0 4px"><span data-i18n="radius"></span> <span id="radiusVal"></span></div>
+      <div class="radius-row"><input type="range" id="radiusRange" min="6" max="34" /></div>
+      <button class="btn-accent" style="width:100%;margin-top:22px" id="settingsClose" data-i18n="done"></button>
+    </div>
+  </div>
+
+  <!-- 공통 팝업 -->
+  <div id="popup" class="overlay hidden">
+    <div class="modal pop">
+      <h2 id="popupTitle"></h2>
+      <p id="popupMsg"></p>
+      <div class="warn-actions">
+        <button class="btn-ghost hidden" id="popupCancel" style="flex:1" data-i18n="cancel"></button>
+        <button class="btn-accent" id="popupClose" style="flex:1" data-i18n="ok"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 혜택받기 경고 (3 슬라이드) -->
+  <div id="warnModal" class="overlay hidden">
+    <div class="modal warn-modal pop">
+      <h2 data-i18n="warn_title" style="text-align:center;margin-bottom:18px"></h2>
+      <div class="warn-viewport"><div class="warn-track" id="warnTrack"></div></div>
+      <div class="warn-dots" id="warnDots"></div>
+      <label class="remember warn-check"><input type="checkbox" id="warnChk" /> <span data-i18n="warn_confirm"></span></label>
+      <div class="warn-actions">
+        <button class="btn-ghost" id="warnPrev" data-i18n="prev"></button>
+        <button class="btn-accent" id="warnOk" disabled data-i18n="warn_confirm_btn"></button>
+        <button class="btn-ghost" id="warnNext" data-i18n="next"></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

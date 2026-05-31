@@ -1,0 +1,155 @@
+// ============================================================
+//  VPN 시스템 데이터베이스 스키마 (v2 — 계정 단위 재설계)
+//  - 개발용 SQLite (운영 시 PostgreSQL)
+//
+//  [구조]
+//  VpnIp (공유기 1대)  ─< VpnAccount (계정, IP당 5개) ── 게임은 계정마다
+//                           └ 유저에게 부여(이용권: 시간제/월정액)
+//  - PSK는 공유기(IP) 단위 1개 → 그 IP의 모든 계정이 공유.
+//  - 백엔드는 control plane. 게임 트래픽은 각 공유기로 직접 라우팅.
+// ============================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ---------- 사용자 (이용권·시간은 사용자 단위로 관리) ----------
+model User {
+  id           Int       @id @default(autoincrement())
+  username     String    @unique
+  passwordHash String
+  role         String    @default("user") // "admin" | "user"
+  paid         Boolean   @default(false)   // 관리자가 결제확인 시 표시
+  createdAt    DateTime  @default(now())
+
+  // ---- 이용권 (사용자 단위) ----
+  planType     String?   // "time"(종량) | "monthly"(월정액)
+  remainingSeconds Int?       // 시간제: 남은 초
+  expiresAt    DateTime?      // 월정액: 만료 시각
+  lastTickAt   DateTime?      // 시간제 차감 기준
+
+  // ---- 연결 상태 (사용자 단위) ----
+  connected     Boolean  @default(false)
+  lastHeartbeat DateTime?
+
+  // ---- 정지(끄기)/반복 어뷰징 (시간제) ----
+  stopsUsed        Int      @default(0)
+  timePenalty      Boolean  @default(false)
+  blocked          Boolean  @default(false)
+  suspended        Boolean  @default(false)   // 관리자 수동 정지(연결 차단, 어뷰징 차단과 별개)
+  sessionId        String?                     // 단일 세션: 최신 로그인 세션 ID(다른 PC 로그인 시 기존 무효화)
+  abuseWindowStart DateTime?
+  abuseCount       Int      @default(0)
+
+  account      VpnAccount? // 유저당 VPN 계정(슬롯) 1개
+  sessions     Session[]
+  detections   DetectionLog[]
+}
+
+// ---------- 게임 ----------
+model Game {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  image     String?  // 클라이언트 img/ 폴더의 파일명 (예: battleground.jpg)
+  createdAt DateTime @default(now())
+
+  accounts  VpnAccount[]
+  sessions  Session[]
+}
+
+// ---------- 공유기(라우터) ----------
+model VpnIp {
+  id            Int      @id @default(autoincrement())
+  ipAddress     String   @unique // 공인 IP
+  host          String   // 접속 호스트 (보통 ipAddress)
+  port          Int      // L2TP 포트
+  protocol      String   @default("l2tp")
+  pskEnc        String?  // L2TP/IPsec 사전공유키 (IP 단위 공유, 암호화)
+
+  // 공유기 관리자 접속정보 (하트비트 끊김 시 강제 세션해제용)
+  adminUrl         String? // 예: http://1.2.3.4:8080
+  adminUsername    String?
+  adminPasswordEnc String?
+
+  // 메타
+  brand         String?
+  model         String?
+  region        String?
+  online        Boolean  @default(true)
+  lastCheckedAt DateTime?
+
+  accounts      VpnAccount[]
+
+  @@index([online])
+}
+
+// ---------- VPN 계정 = 연결 슬롯 (공유기 등록 시 자동 5개 생성) ----------
+//  게임은 고정이 아니라 유저가 연결할 때 선택 → currentGameId (연결 중에만 점유).
+//  같은 공유기(IP)에서 currentGameId 중복 금지(동시 사용 기준).
+model VpnAccount {
+  id          Int      @id @default(autoincrement())
+  vpnIpId     Int
+
+  username    String   @unique // L2TP 로그인 ID
+  passwordEnc String   // L2TP 로그인 비번 (암호화)
+
+  // 배정 (유저에게)
+  status      String   @default("available") // "available" | "assigned"
+  assignedTo  Int?     @unique
+  assignedAt  DateTime?
+
+  // 현재 선택된 게임 (연결 중에만 점유, 끊으면 null)
+  currentGameId Int?
+
+  vpnIp       VpnIp    @relation(fields: [vpnIpId], references: [id], onDelete: Cascade)
+  currentGame Game?    @relation(fields: [currentGameId], references: [id], onDelete: SetNull)
+  user        User?    @relation(fields: [assignedTo], references: [id], onDelete: SetNull)
+
+  @@index([vpnIpId])
+  @@index([vpnIpId, currentGameId]) // IP별 게임 중복 검사
+  @@index([status])
+}
+
+// ---------- 접속 세션 기록 ----------
+model Session {
+  id            Int       @id @default(autoincrement())
+  userId        Int
+  gameId        Int
+  vpnAccountId  Int
+  startedAt     DateTime  @default(now())
+  endedAt       DateTime?
+
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  game      Game @relation(fields: [gameId], references: [id], onDelete: Cascade)
+}
+
+// ---------- 관리자 알림 ----------
+model Alert {
+  id        Int      @id @default(autoincrement())
+  type      String   // "heartbeat_lost" | "plan_expired" | "router_offline"
+  username  String
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([read, createdAt])
+}
+
+// ---------- 감지 로그 (방법 B) ----------
+model DetectionLog {
+  id            Int      @id @default(autoincrement())
+  userId        Int
+  assignedGame  String
+  detectedGame  String
+  matched       Boolean
+  createdAt     DateTime @default(now())
+
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([matched, createdAt])
+}
